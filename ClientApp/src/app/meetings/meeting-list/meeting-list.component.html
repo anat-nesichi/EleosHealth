@@ -1,0 +1,20 @@
+<p *ngIf="!meetings"><em>Loading...</em></p>
+<h4 *ngIf="meetings && meetings.length == 0" class="no-meetings-title">*** There are no live meetings at the moment ***</h4>
+<table class='table-container' aria-labelledby="tableLabel" *ngIf="meetings && meetings.length > 0">
+  <thead class="table-header-conatainer">
+    <tr class="table-header-row">
+      <th>Id</th>
+      <th>Number Of Participants</th>
+      <th>End Meeting</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let meeting of meetings" class="table-content-row">
+      <td>{{ meeting.id }}</td>
+      <td>{{ meeting.participants }}</td>
+      <td class="w3-xlarge">
+        <i title="End Meeting" class="fas fa-phone-slash icons" (click)="endMeeting(meeting.id)"></i>
+      </td>
+    </tr>
+  </tbody>
+</table>
